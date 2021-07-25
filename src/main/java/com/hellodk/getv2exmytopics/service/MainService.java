@@ -16,7 +16,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +73,9 @@ public class MainService {
                 titleInfoMap.put("seq", forEachLoopVar);
                 titleInfoMap.put("title", title);
                 // 拼接完整 url
-                titleInfoMap.put("url", SITE_BASE_URL.concat(href));
+                String topicUrl = SITE_BASE_URL.concat(href);
+                titleInfoMap.put("url", topicUrl);
+                getTopicInfo(topicUrl);
                 jsonList.add(titleInfoMap);
                 ++forEachLoopVar;
             }
@@ -78,5 +83,25 @@ public class MainService {
         }
 //        System.out.println(titleList.toString());
         return resultJsonObj;
+    }
+
+    public String getTopicCreatedTime() {
+        String time = "2021-07-23T03:43:21Z";
+
+        time = time.replace("Z", " UTC");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss Z");
+        Date d = null;
+        try {
+            d = format.parse(time);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //此处是将date类型装换为字符串类型，比如：Sat Nov 18 15:12:06 CST 2017转换为2017-11-18 15:12:06
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // String date = sf.format(d);
+//        System.out.println(d);//这里输出的是date类型的时间
+//        System.out.println(d.getTime() / 1000);//这里输出的是以秒为单位的long类型的时间。如果需要一毫秒为单位，可以不用除1000.
+        return sf.format(d);
     }
 }
