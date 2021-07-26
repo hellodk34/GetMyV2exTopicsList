@@ -41,11 +41,13 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 
 将对应的 cookie 值替换成你自己的。
 
-截图
+运行截图
 
 ![20210726135117.png](https://cdn.jsdelivr.net/gh/hellodk34/image@main/img/20210726135117.png)
 
 ![20210726135135.png](https://cdn.jsdelivr.net/gh/hellodk34/image@main/img/20210726135135.png)
+
+![20210726161316.png](https://cdn.jsdelivr.net/gh/hellodk34/image@main/img/20210726161316.png)
 
 ---
 
@@ -55,6 +57,7 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 - cookies 需要写成 "COOKIE_NAME=COOKIE_VALUE" 的形式。在 PowerShell 下需要使用双引号包裹 cookie 的键和值
 - 由于 v 站现在被墙，所以建议你使用科学上网的路由器运行。或者在终端使用临时的代理
 - v 站 COOKIE_VALUE cookie 的值（字符串类型）用双引号包裹了。填入 "COOKIE_NAME=COOKIE_VALUE" 时，需要把 复制过来的 COOKIE_VALUE 两端的双引号去掉
+- 遇到 Caused by: java.io.EOFException: SSL peer shut down incorrectly 问题建议优先更换代理节点。比如美国节点更换成新加坡节点
 
 Linux/macOS 下终端创建临时代理
 

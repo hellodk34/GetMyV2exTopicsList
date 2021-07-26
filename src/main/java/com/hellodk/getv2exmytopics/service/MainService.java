@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hellodk
@@ -98,9 +99,10 @@ public class MainService {
         JSONObject resultJsonObj = new JSONObject(totalPageNumber, true);
 
         for (int i = 0; i < totalPageNumber; i++) {
+            long currentPageStartTime = System.currentTimeMillis();
             String iPlusOne = String.valueOf(i + 1);
             String url = BASE_URL.concat(iPlusOne);
-            System.out.println("第 " + (i + 1) + " 次循环 url 是 " + url);
+            System.out.print("正在获取第 " + (i + 1) + " 页数据，url 是 " + url);
             RequestEntity requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI(url));
             ResponseEntity responseEntity = restTemplate.exchange(requestEntity, String.class);
             Object responseEntityBody = responseEntity.getBody();
@@ -134,6 +136,9 @@ public class MainService {
                 jsonList.add(titleInfoMap);
                 ++forEachLoopVar;
             }
+            long currentPageEndTime = System.currentTimeMillis();
+            float currentPageExecTime = (float) (currentPageEndTime - currentPageStartTime) / 1000;
+            System.out.println(" 获取当前页数据用时 " + currentPageExecTime + "s");
             resultJsonObj.put(pageNum, jsonList);
         }
         write2File(resultJsonObj);
@@ -164,8 +169,11 @@ public class MainService {
             fileWriter.close();
             System.out.println("done");
             long endTime = System.currentTimeMillis();
-            float execTime = (float) (endTime - startTime) / 1000;
-            System.out.println("while fetching your v2ex topics list, elapsed time is " + execTime + "s");
+            // float execTime = (float) (endTime - startTime) / 1000;
+            // long totalMinutes = TimeUnit.MINUTES.toMinutes(endTime - startTime);
+            long totalMinutes = (endTime - startTime) / 1000 / 60;
+            long totalSeconds = ((endTime - startTime) / 1000 % 60) % 60;
+            System.out.println("while fetching your v2ex topics list, total elapsed time is " + totalMinutes + "min " + totalSeconds + "sec");
         }
         catch (IOException e) {
             e.printStackTrace();

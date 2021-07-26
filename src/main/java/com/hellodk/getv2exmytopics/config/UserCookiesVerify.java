@@ -1,9 +1,5 @@
 package com.hellodk.getv2exmytopics.config;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * @author: hellodk
  * @description user cookies verify
