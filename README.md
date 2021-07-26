@@ -31,7 +31,7 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 
 ## 2. 下载 jar 包
 
-去该项目的 [release](https://github.com/hellodk34/GetMyV2exTopicsList/releases) 下载 `0.0.1` 版本的 jar 包到本地
+去该项目的 [release](https://github.com/hellodk34/GetMyV2exTopicsList/releases) 页面下载最新版本的 jar 包到本地
 
 ## 3. 本地通过 `java -jar` 运行
 
@@ -53,7 +53,7 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 
 注意：
 
-- TOTAL_PAGE_NUMBER 打开 https://www.v2ex.com/my/topics 查看收藏的帖子共有多少页。此值需要小于等于你看到的页数。由于没有请求 v 站相应接口获取页数，所以这个值没有最大值校验。但运行时你可以输入 1 2 等只导出第一页或第二页数据
+- TOTAL_PAGE_NUMBER 打开 https://www.v2ex.com/my/topics 查看收藏的帖子共有多少页。此值需要小于等于你看到的页数。由于没有请求 v 站相应接口获取页数，所以这个值没有最大值校验。但运行时你可以输入 1 2 等只导出第一页或前两页数据
 - cookies 需要写成 "COOKIE_NAME=COOKIE_VALUE" 的形式。在 PowerShell 下需要使用双引号包裹 cookie 的键和值
 - 由于 v 站现在被墙，所以建议你使用科学上网的路由器运行。或者在终端使用临时的代理
 - v 站 COOKIE_VALUE cookie 的值（字符串类型）用双引号包裹了。填入 "COOKIE_NAME=COOKIE_VALUE" 时，需要把 复制过来的 COOKIE_VALUE 两端的双引号去掉
