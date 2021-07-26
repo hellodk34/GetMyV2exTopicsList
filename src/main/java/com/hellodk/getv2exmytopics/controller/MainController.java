@@ -17,12 +17,12 @@ import java.net.URISyntaxException;
 @RestController
 public class MainController {
 
-    @Autowired
-    private MainService mainService;
-
-    @RequestMapping(method = RequestMethod.GET, value = "")
-    public JSONObject testGetRequest() throws URISyntaxException {
-        return mainService.sendGet();
-    }
+//    @Autowired
+//    private MainService mainService;
+//
+//    @RequestMapping(method = RequestMethod.GET, value = "")
+//    public JSONObject testGetRequest() throws URISyntaxException {
+//        return mainService.sendGet();
+//    }
 
 }

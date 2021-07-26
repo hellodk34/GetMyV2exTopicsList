@@ -23,7 +23,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestTemplateConfig {
-
     @Autowired
     private ApplicationValues appValues;
 
@@ -60,5 +59,4 @@ public class RestTemplateConfig {
                 .setConnectionManager(connectionManager)
                 .build();
     }
-
 }
