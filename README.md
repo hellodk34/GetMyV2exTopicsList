@@ -58,6 +58,7 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 - 由于 v 站现在被墙，所以建议你使用科学上网的路由器运行。或者在终端使用临时的代理
 - v 站 COOKIE_VALUE cookie 的值（字符串类型）用双引号包裹了。填入 "COOKIE_NAME=COOKIE_VALUE" 时，需要把 复制过来的 COOKIE_VALUE 两端的双引号去掉
 - 遇到 Caused by: java.io.EOFException: SSL peer shut down incorrectly 问题建议优先更换代理节点。比如美国节点更换成新加坡节点
+- 如果不具备科学上网路由器也可以在你的海外 VPS 上执行这个任务。使用 `wget` 将 jar 包下载到 vps 上然后执行任务 （也很建议这么做）
 
 Linux/macOS 下终端创建临时代理
 
