@@ -3,6 +3,12 @@ get my v2ex topics list. 快速获取 v2ex 上我收藏的帖子列表
 
 ---
 
+# 2021-08-04 16:32:15 update
+
+导出的每个帖子信息中新增创建者
+
+![20210804163000.png](https://cdn.jsdelivr.net/gh/hellodk34/image@main/img/20210804163000.png)
+
 # 我收藏的帖子状况
 
 595个帖子
