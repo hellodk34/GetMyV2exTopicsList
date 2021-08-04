@@ -2,13 +2,14 @@ package com.hellodk.getv2exmytopics.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hellodk.getv2exmytopics.config.UserCookiesVerify;
-import org.springframework.http.HttpHeaders;
+import org.apache.commons.collections4.MapUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -27,7 +28,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author hellodk
@@ -56,6 +56,8 @@ public class MainService {
     private final String TOPIC_CREATED_TIME = "createdTime";
 
     private final String TOPIC_URL = "url";
+
+    private final String TOPIC_CREATOR = "creator";
 
     static int totalPageNumber = 1;
 
@@ -123,15 +125,19 @@ public class MainService {
                 titleInfoMap.put(TOPIC_TITLE, title);
                 // 拼接完整 url
                 String topicUrl = SITE_BASE_URL.concat(href);
+                // 添加帖子 url 信息
                 titleInfoMap.put(TOPIC_URL, topicUrl);
 
                 /*
-                如果不需要导出帖子的创建时间，可以注释下面两行代码。
+                如果不需要导出帖子的创建时间，可以注释下面那段获取帖子创建时间和创建者的代码。
                 由于获取创建时间需要请求每一个对应的帖子，所以特别耗时。
                 如果电脑 cpu 过慢并且梯子质量不好可能会触发 v 站的 403 forbidden 请求中断
                  */
-                String createdTime = getTopicInfo(headers, topicUrl);
-                titleInfoMap.put(TOPIC_CREATED_TIME, createdTime);
+                Map resultMap = getFinalTopicCreatedTime(headers, topicUrl);
+                if (resultMap != null) {
+                    titleInfoMap.put(TOPIC_CREATED_TIME, MapUtils.getString(resultMap, TOPIC_CREATED_TIME));
+                    titleInfoMap.put(TOPIC_CREATOR, MapUtils.getString(resultMap, TOPIC_CREATOR));
+                }
 
                 jsonList.add(titleInfoMap);
                 ++forEachLoopVar;
@@ -188,8 +194,9 @@ public class MainService {
      * @description 获取对应帖子的相关信息
      * @date 7/26/2021 9:45 AM
      */
-    private String getTopicInfo(HttpHeaders headers, String topicUrl) {
+    private Map getFinalTopicCreatedTime(HttpHeaders headers, String topicUrl) {
         RequestEntity requestEntity = null;
+        Map<String, String> resultMap = new HashMap<>();
         try {
             requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI(topicUrl));
         }
@@ -203,9 +210,20 @@ public class MainService {
             // Get publishedTime from document object
             String publishedTime = document.select("meta[property=article:published_time]").get(0)
                     .attr("content");
-            return getTopicCreatedTime(publishedTime);
+            publishedTime = getTopicCreatedTime(publishedTime);
+            Element creator = document.select("div.header").first();
+            Element tagA = creator.select("a").first();
+            // tagA 是空的情况代表该帖子是你自己发的，需要使用最后一个 div.header 的 Element 元素的 a 标签的 href 信息
+            if (tagA == null) {
+                creator = document.select("div.header").last();
+                tagA = creator.select("a").first();
+            }
+            String creatorString = tagA.attr("href");
+            creatorString = creatorString.replace("/member/", "");
+            resultMap.put(TOPIC_CREATED_TIME, publishedTime);
+            resultMap.put(TOPIC_CREATOR, creatorString);
         }
-        return "";
+        return resultMap;
     }
 
     /**
