@@ -90,12 +90,24 @@ public class MainService {
 
         HttpHeaders headers = new HttpHeaders();
         List<String> cookiesList = new ArrayList<>();
-        cookiesList.add(a2);
-        cookiesList.add(v2exTab);
-        cookiesList.add(pb3Session);
-        cookiesList.add(v2exLang);
-        cookiesList.add(v2exReferrer);
 
+        // 配置是否是从配置文件中加载
+        Boolean loadConfigFile = UserCookiesVerify.getLoadConfigFile();
+        // 如果从配置文件中加载的 cookie 信息，塞入 header 的 cookie 信息需要加上 `key=` （key=value 这样拼接）
+        if (Boolean.TRUE.equals(loadConfigFile)) {
+            cookiesList.add("A2=".concat(a2));
+            cookiesList.add("V2EX_TAB=".concat(v2exTab));
+            cookiesList.add("PB3_SESSION=".concat(pb3Session));
+            cookiesList.add("V2EX_LANG=".concat(v2exLang));
+            cookiesList.add("V2EX_REFERRER=".concat(v2exReferrer));
+        }
+        else {
+            cookiesList.add(a2);
+            cookiesList.add(v2exTab);
+            cookiesList.add(pb3Session);
+            cookiesList.add(v2exLang);
+            cookiesList.add(v2exReferrer);
+        }
         headers.put(HttpHeaders.COOKIE, cookiesList);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         JSONObject resultJsonObj = new JSONObject(totalPageNumber, true);

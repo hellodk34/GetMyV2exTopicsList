@@ -41,6 +41,8 @@ public class UserCookiesVerify {
 
     public static String V2EX_REFERRER = "";
 
+    public static Boolean loadConfigFile = true;
+
     @Override
     public String toString() {
         return super.toString();
@@ -65,6 +67,14 @@ public class UserCookiesVerify {
         UserCookiesVerify.PB3_SESSION = pb3Session;
         UserCookiesVerify.V2EX_LANG = v2exLang;
         UserCookiesVerify.V2EX_REFERRER = v2exReferrer;
+    }
+
+    public static void setLoadConfigFile(boolean bool) {
+        UserCookiesVerify.loadConfigFile = bool;
+    }
+
+    public static Boolean getLoadConfigFile() {
+        return loadConfigFile;
     }
 
 
