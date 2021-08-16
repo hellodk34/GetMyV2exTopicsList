@@ -96,6 +96,11 @@ public class MainService {
         cookiesList.add(v2exLang);
         cookiesList.add(v2exReferrer);
 
+//        headers.add("A2", a2);
+//        headers.add("V2EX_TAB", v2exTab);
+//        headers.add("PB3_SESSION", pb3Session);
+//        headers.add("V2EX_LANG", v2exLang);
+//        headers.add("V2EXREFERER", v2exReferrer);
         headers.put(HttpHeaders.COOKIE, cookiesList);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         JSONObject resultJsonObj = new JSONObject(totalPageNumber, true);
