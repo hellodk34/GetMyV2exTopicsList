@@ -91,3 +91,57 @@ set https_proxy=http://127.0.0.1:7890
 我导出了我近期收藏的两页帖子，托管在 n1 上了。
 
 👉🏻 v2ex 我收藏的帖子列表 https://blog.hellodk.com/blog/post/dk11/v2ex-my-topics
+
+---
+
+# deploy by docker
+
+# Image Description
+
+A docker image helping you to fetch your v2ex favorite topics. Download them as a json file and save to your local disk.
+
+# Usage
+
+## first
+
+docker pull this image
+
+```
+docker pull ko0/v2extopicslist:1.0
+```
+
+## second
+
+get your v2ex **Cookies**.
+
+Do not know how to get? see also 👉🏻 [GetMyV2exTopicsList](https://github.com/hellodk34/GetMyV2exTopicsList)
+
+## third
+
+create a `config.json` file to save your v2ex Cookies, like this
+
+```
+{
+  "pageNum": 1,
+  "A2": "aaa",
+  "V2EX_LANG": "zhcn",
+  "PB3_SESSION": "bbb",
+  "V2EX_TAB": "ccc",
+  "V2EX_REFERRER": "ddd"
+}
+```
+
+**Be attention: The key sequence of your json file needs to be the same with the above example json file.**
+
+## third
+
+and finally, docker run this image
+
+```
+docker run --name v2ex -v /path/to/host-machine-that-contain-above-config-file:/app dko0/v2extopicslist:1.0
+```
+
+**ps: please mount `/app` (in container) to your host machine, and make sure the correct `config.json` file is in this folder.**
+
+Congratulations! When your application ends normally, you could see `myv2extopicslist.json` in this folder: `/path/to/host-machine-that-contain-above-config-file`
+

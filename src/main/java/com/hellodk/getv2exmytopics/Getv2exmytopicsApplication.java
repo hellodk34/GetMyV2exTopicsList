@@ -64,6 +64,7 @@ public class Getv2exmytopicsApplication {
                     UserCookiesVerify.verify(((Integer) arguments[0]), (String) arguments[1], (String) arguments[2], (String) arguments[3], (String) arguments[4], (String) arguments[5]);
                 }
             }
+            UserCookiesVerify.setLoadConfigFile(true);
         }
         else if (length < 2) {
             System.out.println("please input at least 2 variables");
@@ -71,9 +72,11 @@ public class Getv2exmytopicsApplication {
         }
         else if (length == 5) {
             UserCookiesVerify.verify(Integer.parseInt(args[0]), args[1], args[2], args[3], args[4]);
+            UserCookiesVerify.setLoadConfigFile(false);
         }
         else if (length == 6) {
             UserCookiesVerify.verify(Integer.parseInt(args[0]), args[1], args[2], args[3], args[4], args[5]);
+            UserCookiesVerify.setLoadConfigFile(false);
         }
 
         ConfigurableApplicationContext context = SpringApplication.run(Getv2exmytopicsApplication.class, args);
