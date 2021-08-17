@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -36,9 +38,8 @@ public class Getv2exmytopicsApplication {
         int length = args.length;
         if (length < 1) {
             System.out.println("program arguments is empty, start to read config.json");
-            String configJsonFilePath = "/config.json";
-            ClassPathResource classPathResource = new ClassPathResource(configJsonFilePath);
-            InputStream configJson = classPathResource.getInputStream();
+            String configJsonFilePath = "/config/config.json";
+            InputStream configJson = new FileInputStream(configJsonFilePath);
             if (configJson == null) {
                 throw new RuntimeException("read config.json file failed");
             }

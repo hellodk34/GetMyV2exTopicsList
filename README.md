@@ -107,7 +107,7 @@ A docker image helping you to fetch your v2ex favorite topics. Download them as 
 docker pull this image
 
 ```
-docker pull ko0/v2extopicslist:1.0
+docker pull dko0/v2extopicslist:2.0
 ```
 
 ## second
@@ -133,15 +133,23 @@ create a `config.json` file to save your v2ex Cookies, like this
 
 **Be attention: The key sequence of your json file needs to be the same with the above example json file.**
 
-## third
+## fourth
 
 and finally, docker run this image
 
 ```
-docker run --name v2ex -v /path/to/host-machine-that-contain-above-config-file:/app dko0/v2extopicslist:1.0
+docker run --name v2ex -v /path/to/host-machine-that-contain-above-config-file:/config dko0/v2extopicslist:2.0
 ```
 
-**ps: please mount `/app` (in container) to your host machine, and make sure the correct `config.json` file is in this folder.**
+**ps: please mount `/config` (in container) to your host machine, and make sure the correct `config.json` file is in this folder.**
 
-Congratulations! When your application ends normally, you could see `myv2extopicslist.json` in this folder: `/path/to/host-machine-that-contain-above-config-file`
+## fifth
 
+using command `docker cp` to copy the generated json file to host machine
+
+```
+docker cp v2ex:/app/myv2extopicslist.json .
+```
+
+
+Congratulations! You could see `myv2extopicslist.json` in current folder.
