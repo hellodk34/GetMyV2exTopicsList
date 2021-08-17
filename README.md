@@ -98,7 +98,156 @@ set https_proxy=http://127.0.0.1:7890
 
 # Image Description
 
-A docker image helping you to fetch your v2ex favorite topics. Download them as a json file and save to your local disk.
+A docker image helping you to fetch your v2ex favorite topics. Download them as a json file and save it to your local disk.
+
+the output is like this
+
+```
+{
+    "page1": [
+        {
+            "creator": "xinJang",
+            "createdTime": "2020-05-04 07:49:14",
+            "title": "原来移动是 nat1，快去看看你的是不是",
+            "seq": 1,
+            "url": "https://www.v2ex.com/t/668456#reply39"
+        },
+        {
+            "creator": "azev",
+            "createdTime": "2021-08-13 12:47:05",
+            "title": "大家用什么网页划词翻译插件？",
+            "seq": 2,
+            "url": "https://www.v2ex.com/t/795672#reply12"
+        },
+        {
+            "creator": "moxuanyuan",
+            "createdTime": "2020-06-05 06:13:09",
+            "title": "分享一些我喜欢听中文科技类播客节目",
+            "seq": 3,
+            "url": "https://www.v2ex.com/t/678954#reply0"
+        },
+        {
+            "creator": "iyg429",
+            "createdTime": "2021-08-12 07:15:58",
+            "title": "不好意思 请问下有没有男士用的洗面奶",
+            "seq": 4,
+            "url": "https://www.v2ex.com/t/795353#reply160"
+        },
+        {
+            "creator": "balabalaguguji",
+            "createdTime": "2021-08-11 06:51:07",
+            "title": "分享下好评如潮的 SVN 视频教程",
+            "seq": 5,
+            "url": "https://www.v2ex.com/t/795084#reply18"
+        },
+        {
+            "creator": "morizawatt",
+            "createdTime": "2021-08-09 03:28:42",
+            "title": "一个程序员朋友， 90 后，刚查出慢性肾衰，二期",
+            "seq": 6,
+            "url": "https://www.v2ex.com/t/794579#reply162"
+        },
+        {
+            "creator": "beginor",
+            "createdTime": "2021-08-03 01:29:01",
+            "title": "聊聊心目中的完美笔记本",
+            "seq": 7,
+            "url": "https://www.v2ex.com/t/793294#reply152"
+        },
+        {
+            "creator": "xiaoz",
+            "createdTime": "2021-08-07 01:48:48",
+            "title": "有适合自建的文档系统推荐吗？",
+            "seq": 8,
+            "url": "https://www.v2ex.com/t/794225#reply16"
+        },
+        {
+            "creator": "junas7",
+            "createdTime": "2021-08-05 05:42:22",
+            "title": "迫于伞兵网友太多，求一个没有评论、社交属性的新闻获取途径",
+            "seq": 9,
+            "url": "https://www.v2ex.com/t/793834#reply51"
+        },
+        {
+            "creator": "goodhellonice",
+            "createdTime": "2021-08-03 06:38:36",
+            "title": "V 友们平时都喝什么咖啡？有什么无（低）糖速溶咖啡推荐么？",
+            "seq": 10,
+            "url": "https://www.v2ex.com/t/793386#reply105"
+        },
+        {
+            "creator": "fyxtc",
+            "createdTime": "2021-08-03 03:53:54",
+            "title": "游戏行业完了？",
+            "seq": 11,
+            "url": "https://www.v2ex.com/t/793350#reply83"
+        },
+        {
+            "creator": "Kamitora",
+            "createdTime": "2018-12-26 13:26:33",
+            "title": "打算搭建一个博客，当今应选择哪个博客框架？",
+            "seq": 12,
+            "url": "https://www.v2ex.com/t/521313#reply199"
+        },
+        {
+            "creator": "seoikei",
+            "createdTime": "2021-02-25 02:09:50",
+            "title": "各位朋友戴这个手表有出现过过敏吗？（图片有点恶心，慎点）",
+            "seq": 13,
+            "url": "https://www.v2ex.com/t/756068#reply102"
+        },
+        {
+            "creator": "rockdai",
+            "createdTime": "2021-07-12 06:18:25",
+            "title": "有没有卖 Apple Watch 表带的店推荐？",
+            "seq": 14,
+            "url": "https://www.v2ex.com/t/789005#reply19"
+        },
+        {
+            "creator": "leeum",
+            "createdTime": "2021-05-19 09:05:41",
+            "title": "HUAWEI MateView 用来外接 Mac 如何？",
+            "seq": 15,
+            "url": "https://www.v2ex.com/t/777946#reply124"
+        },
+        {
+            "creator": "serco",
+            "createdTime": "2021-07-28 07:59:52",
+            "title": "写个系列文章给 A 股小白看有人有兴趣吗？多年资深亏损经验😂",
+            "seq": 16,
+            "url": "https://www.v2ex.com/t/792299#reply49"
+        },
+        {
+            "creator": "zictos",
+            "createdTime": "2021-07-29 11:14:35",
+            "title": "现在还有能发各种宽泛的帖子的高质量的地方吗？",
+            "seq": 17,
+            "url": "https://www.v2ex.com/t/792537#reply115"
+        },
+        {
+            "creator": "ruiyi1994",
+            "createdTime": "2021-07-24 02:17:42",
+            "title": "腾讯云 cross the great wall 自用节点被封了",
+            "seq": 18,
+            "url": "https://www.v2ex.com/t/791468#reply29"
+        },
+        {
+            "creator": "joyhub2140",
+            "createdTime": "2021-07-25 13:34:28",
+            "title": "一部电影分三个晚上看完。",
+            "seq": 19,
+            "url": "https://www.v2ex.com/t/791684#reply60"
+        },
+        {
+            "creator": "Pogbag",
+            "createdTime": "2021-07-28 04:59:59",
+            "title": "家庭 10w 的车有推荐的吗",
+            "seq": 20,
+            "url": "https://www.v2ex.com/t/792254#reply86"
+        }
+    ]
+}
+```
 
 # Usage
 
@@ -131,6 +280,8 @@ create a `config.json` file to save your v2ex Cookies, like this
 }
 ```
 
+`pageNum` pageNum is the number of pages you want to get. The maximum number cannot be greater than the maximum number of pages of your favorite topics. Such as 1, it will only get first page of your favorite topics.
+
 **Be attention: The key sequence of your json file needs to be the same with the above example json file.**
 
 ## fourth
@@ -153,3 +304,7 @@ docker cp v2ex:/app/myv2extopicslist.json .
 
 
 Congratulations! You could see `myv2extopicslist.json` in current folder.
+
+---
+
+docker image address: https://hub.docker.com/r/dko0/v2extopicslist
